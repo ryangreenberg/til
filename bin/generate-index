@@ -1,0 +1,85 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Regenerates the index section of README.md from TIL entries.
+# Entries are plain markdown files organized as category/slug.md.
+# The title is extracted from the first H1 heading in each file.
+
+require "pathname"
+
+ROOT = Pathname.new(__dir__).join("..").expand_path
+README = ROOT.join("README.md")
+IGNORE_DIRS = %w[bin].freeze
+
+START_MARKER = "<!-- start index -->"
+END_MARKER = "<!-- end index -->"
+
+def extract_title(path)
+  File.foreach(path) do |line|
+    if line.match?(/^#\s+/)
+      return line.sub(/^#\s+/, "").strip
+    end
+  end
+  # Fallback: humanize the filename
+  path.basename(".md").to_s.tr("-", " ").capitalize
+end
+
+# Load all the markdown files and return as Hash[category => [entries]]
+def collect_entries
+  entries = Hash.new { |h, k| h[k] = [] }
+
+  Dir.glob(ROOT.join("*/*.md")).each do |file|
+    path = Pathname.new(file).relative_path_from(ROOT)
+    category = path.dirname.to_s
+    next if category == "." # skip root-level markdown files
+    next if IGNORE_DIRS.include?(category)
+
+    title = extract_title(file)
+    entries[category] << { title: title, path: path.to_s }
+  end
+
+  entries
+end
+
+def format_category_name(dirname)
+  dirname.tr("-", " ").split.map(&:capitalize).join(" ")
+end
+
+def generate_index(entries)
+  lines = []
+
+  entries.keys.sort.each do |category|
+    lines << "## #{format_category_name(category)}"
+    lines << ""
+    entries[category].sort_by { |e| e[:title].downcase }.each do |entry|
+      lines << "- [#{entry[:title]}](#{entry[:path]})"
+    end
+    lines << ""
+  end
+
+  lines.join("\n").rstrip
+end
+
+def update_readme(index)
+  content = README.read
+
+  unless content.include?(START_MARKER) && content.include?(END_MARKER)
+    abort "ERROR: README.md is missing index markers (#{START_MARKER} / #{END_MARKER})"
+  end
+
+  before = content.split(START_MARKER).first
+  after = content.split(END_MARKER).last
+
+  new_content = "#{before}#{START_MARKER}\n\n#{index}\n\n#{END_MARKER}#{after}"
+
+  README.write(new_content)
+end
+
+def main(args)
+  entries = collect_entries
+  index = generate_index(entries)
+  update_readme(index)
+  warn "Updated README with #{entries.values.flatten.length} entries in #{entries.length} categories"
+end
+
+main(ARGV) if $PROGRAM_NAME == __FILE__
