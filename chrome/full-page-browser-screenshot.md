@@ -6,4 +6,6 @@
 
 This will save a (potentially very tall) image in your downloads folder.
 
+![Capture full size screenshot in the Chrome Command Palette](command_palette_capture_full_size_screenshot.png)
+
 It makes me smile to think how many developer tools have gained so many capabilities that a command palette is useful to navigate them. Many years ago I used Firefox 3.5 exclusively because of [Firebug](https://en.wikipedia.org/wiki/Firebug_(software)), an extension that provided developer tools like a JavaScript console, DOM navigation, CSS editing. It was so successful that it eventually every browser got built-in developer tools (Firebug retired in 2017). Now Chrome has dozens of tabs and tools.
