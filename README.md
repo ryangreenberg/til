@@ -4,6 +4,10 @@ This is a collection of things I have learned while using computers (which I do 
 
 <!-- start index -->
 
+## Chrome
+
+- [Take a full page browser screenshot](chrome/full-page-browser-screenshot.md)
+
 <!-- end index -->
 
 ### Development
