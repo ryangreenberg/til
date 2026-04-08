@@ -10,6 +10,6 @@ This is a collection of things I have learned while using computers (which I do 
 
 <!-- end index -->
 
-### Development
+# Development
 
 Use `bin/generate-index` to produce this README from entries in the repository. See [DEVELOPMENT.md](DEVELOPMENT.md).
