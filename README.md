@@ -8,6 +8,10 @@ This is a collection of things I have learned while using computers (which I do 
 
 - [Take a full page browser screenshot](chrome/full-page-browser-screenshot.md)
 
+## Tools
+
+- [`oxipng` and `pngquant` to compress PNGs](tools/png_compression.md)
+
 <!-- end index -->
 
 # Development
