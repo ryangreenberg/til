@@ -6,6 +6,8 @@
 # The title is extracted from the first H1 heading in each file.
 
 require "pathname"
+require "optparse"
+require "set"
 
 ROOT = Pathname.new(__dir__).join("..").expand_path
 README = ROOT.join("README.md")
@@ -25,14 +27,17 @@ def extract_title(path)
 end
 
 # Load all the markdown files and return as Hash[category => [entries]]
-def collect_entries
+def collect_entries(include_untracked: false)
   entries = Hash.new { |h, k| h[k] = [] }
+
+  tracked_files = `git -C #{ROOT} ls-files "*.md"`.lines.map(&:chomp).to_set unless include_untracked
 
   Dir.glob(ROOT.join("*/*.md")).each do |file|
     path = Pathname.new(file).relative_path_from(ROOT)
     category = path.dirname.to_s
     next if category == "." # skip root-level markdown files
     next if IGNORE_DIRS.include?(category)
+    next if !include_untracked && !tracked_files.include?(path.to_s)
 
     title = extract_title(file)
     entries[category] << { title: title, path: path.to_s }
@@ -76,9 +81,18 @@ def update_readme(index)
 end
 
 def main(args)
-  entries = collect_entries
+  options = { include_untracked: false }
+  parser = OptionParser.new do |opts|
+    opts.on("--include-untracked", "Include files not yet tracked by git") do
+      options[:include_untracked] = true
+    end
+  end
+  parser.parse!(args)
+
+  entries = collect_entries(include_untracked: options[:include_untracked])
   index = generate_index(entries)
   update_readme(index)
+
   entries.each {|c, es| es.each {|e| warn "#{c} - #{e[:title]}" } }
   warn "Updated README with #{entries.values.flatten.length} entries in #{entries.length} categories"
 end
