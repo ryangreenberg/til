@@ -11,6 +11,7 @@ This is a collection of things I have learned while using computers (which I do 
 ## Tools
 
 - [`oxipng` and `pngquant` to compress PNGs](tools/png_compression.md)
+- [`termgraph` for CLI charts](tools/termgraph-cli-charts.md)
 
 <!-- end index -->
 
