@@ -79,6 +79,7 @@ def main(args)
   entries = collect_entries
   index = generate_index(entries)
   update_readme(index)
+  entries.each {|c, es| es.each {|e| warn "#{c} - #{e[:title]}" } }
   warn "Updated README with #{entries.values.flatten.length} entries in #{entries.length} categories"
 end
 
