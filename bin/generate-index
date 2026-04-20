@@ -46,8 +46,13 @@ def collect_entries(include_untracked: false)
   entries
 end
 
+CATEGORY_OVERRIDES = {
+  'ios' => 'iOS',
+  'macos' => 'macOS',
+}
+
 def format_category_name(dirname)
-  dirname.tr("-", " ").split.map(&:capitalize).join(" ")
+  CATEGORY_OVERRIDES[dirname] || dirname.tr("-", " ").split.map(&:capitalize).join(" ")
 end
 
 def generate_index(entries)

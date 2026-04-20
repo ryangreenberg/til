@@ -12,11 +12,11 @@ This is a collection of things I have learned while using computers (which I do 
 
 - [Find my own commits](git/git-log-me.md)
 
-## Ios
+## iOS
 
 - [Use "Invisible Ink" for spoilers in iMessage](ios/invisible-ink.md)
 
-## Macos
+## macOS
 
 - [`cmd + shift + 5` is the final screenshot command](macos/cmd-shift-five.md)
 
