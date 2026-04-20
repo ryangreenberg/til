@@ -16,6 +16,10 @@ This is a collection of things I have learned while using computers (which I do 
 
 - [Use "Invisible Ink" for spoilers in iMessage](ios/invisible-ink.md)
 
+## Macos
+
+- [`cmd + shift + 5` is the final screenshot command](macos/cmd-shift-five.md)
+
 ## Tools
 
 - [`oxipng` and `pngquant` to compress PNGs](tools/png_compression.md)
