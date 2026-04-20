@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Sets GIT_AUTHOR_DATE and GIT_COMMITTER_DATE to a given datetime, then execs
+# the remaining arguments. With no command, prints the env vars and usage help.
+#
+# Usage:
+#   git-at "2024-06-24 10:48" git commit -m "backdate"
+#   git-at "2024-06-24 10:48" git commit --amend --no-edit
+#   git-at "2024-06-24 10:48"   # prints env vars
+
+require "time"
+
+if ARGV.empty?
+  warn "Usage: git-at <datetime> [command ...]"
+  warn "  e.g. git-at '2024-06-24 10:48' git commit -m 'Add thing'"
+  warn "       git-at '2024-06-24 10:48' git commit --amend --no-edit"
+  warn "       git-at '2024-06-24 10:48'  # prints env vars"
+  exit 1
+end
+
+# The datetime is always the first argument; the rest is the command to exec.
+datetime_str = ARGV.shift
+time = Time.parse(datetime_str)
+formatted = time.strftime("%a %b %-d %H:%M:%S %Y %z")
+
+ENV["GIT_AUTHOR_DATE"] = formatted
+ENV["GIT_COMMITTER_DATE"] = formatted
+
+if ARGV.empty?
+  puts %(GIT_AUTHOR_DATE="#{formatted}" GIT_COMMITTER_DATE="#{formatted}")
+else
+  exec(*ARGV)
+end
