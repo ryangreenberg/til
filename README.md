@@ -20,6 +20,10 @@ This is a collection of things I have learned while using computers (which I do 
 
 - [`cmd + shift + 5` is the final screenshot command](macos/cmd-shift-five.md)
 
+## Shell
+
+- [Use process substitution to tag stdout and stderr](shell/process-substitution-tag-stdout-stderr.md)
+
 ## Tools
 
 - [`oxipng` and `pngquant` to compress PNGs](tools/png_compression.md)
