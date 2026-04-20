@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Commits staged TIL changes: runs bin/generate-index, stages README.md if it
+# changed, and commits with a message derived from the new TIL's H1 title.
+# Aborts if more than one non-README markdown file is staged.
+
+require "pathname"
+
+ROOT = Pathname.new(__dir__).join("..").expand_path
+
+def run(*cmd)
+  system(*cmd, chdir: ROOT.to_s) || abort("command failed: #{cmd.join(" ")}")
+end
+
+def git_capture(*args)
+  output = IO.popen(["git", "-C", ROOT.to_s, *args], &:read)
+  abort("git #{args.join(" ")} failed") unless $?.success?
+  output
+end
+
+def extract_title(path)
+  File.foreach(path) do |line|
+    return line.sub(/^#\s+/, "").strip if line.match?(/^#\s+/)
+  end
+  nil
+end
+
+run(ROOT.join("bin/generate-index").to_s)
+
+run("git", "add", "README.md") unless git_capture("diff", "--name-only", "--", "README.md").strip.empty?
+
+staged = git_capture("diff", "--cached", "--name-only").lines.map(&:chomp)
+til_mds = staged.select { |f| f.end_with?(".md") && f != "README.md" }
+abort "ERROR: no TIL markdown file staged" if til_mds.empty?
+abort "ERROR: multiple TIL markdown files staged: #{til_mds.join(", ")}" if til_mds.length > 1
+
+title = extract_title(ROOT.join(til_mds.first))
+abort "ERROR: no H1 title found in #{til_mds.first}" unless title
+
+# Strip characters that would break or look ugly inside the quoted commit subject.
+clean_title = title.gsub(/[`"]/, "")
+
+run("git", "commit", "-m", %(Add "#{clean_title}" TIL))
