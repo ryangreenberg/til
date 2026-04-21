@@ -6,6 +6,7 @@ This is a collection of things I have learned while using computers (which I do 
 
 ## Chrome
 
+- [`cmd + 9` to select last tab](chrome/cmd-9-last-tab.md)
 - [Take a full page browser screenshot](chrome/full-page-browser-screenshot.md)
 
 ## Git
