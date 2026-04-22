@@ -49,6 +49,7 @@ end
 CATEGORY_OVERRIDES = {
   'ios' => 'iOS',
   'macos' => 'macOS',
+  'sql' => 'SQL',
 }
 
 def format_category_name(dirname)
@@ -99,7 +100,7 @@ def main(args)
   update_readme(index)
 
   entries.each {|c, es| es.each {|e| warn "#{c} - #{e[:title]}" } }
-  warn "Updated README with #{entries.values.flatten.length} entries in #{entries.length} categories"
+  warn "\nUpdated README with #{entries.values.flatten.length} entries in #{entries.length} categories"
 end
 
 main(ARGV) if $PROGRAM_NAME == __FILE__

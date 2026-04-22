@@ -25,7 +25,7 @@ This is a collection of things I have learned while using computers (which I do 
 
 - [Use process substitution to tag stdout and stderr](shell/process-substitution-tag-stdout-stderr.md)
 
-## Sql
+## SQL
 
 - [Window functions](sql/window-functions.md)
 
