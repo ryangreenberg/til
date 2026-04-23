@@ -31,6 +31,7 @@ This is a collection of things I have learned while using computers (which I do 
 
 ## Tools
 
+- [`cal` for a command-line calendar](tools/cal.md)
 - [`oxipng` and `pngquant` to compress PNGs](tools/png_compression.md)
 - [`termgraph` for CLI charts](tools/termgraph-cli-charts.md)
 - [`tldr` for simpler, example-driven help](tools/tldr-pages.md)
