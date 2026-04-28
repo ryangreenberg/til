@@ -27,6 +27,7 @@ This is a collection of things I have learned while using computers (which I do 
 
 ## SQL
 
+- [box, qbox modes for `sqlite3`](sql/sqlite-qbox-format.md)
 - [Window functions](sql/window-functions.md)
 
 ## Tools
