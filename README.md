@@ -20,6 +20,7 @@ This is a collection of things I have learned while using computers (which I do 
 ## macOS
 
 - [`cmd + shift + 5` is the final screenshot command](macos/cmd-shift-five.md)
+- [Use `open` to open in other applications](macos/open-to-open.md)
 
 ## Shell
 
