@@ -24,6 +24,7 @@ This is a collection of things I have learned while using computers (which I do 
 
 ## Shell
 
+- [`tee` to see output and save it](shell/tee.md)
 - [Use process substitution to tag stdout and stderr](shell/process-substitution-tag-stdout-stderr.md)
 
 ## SQL
