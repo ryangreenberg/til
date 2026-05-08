@@ -33,6 +33,10 @@ This is a collection of things I have learned while using computers (which I do 
 - [box, qbox modes for `sqlite3`](sql/sqlite-qbox-format.md)
 - [Window functions](sql/window-functions.md)
 
+## Text
+
+- [Pretty-print column-based data with `column -t`](text/column-t.md)
+
 ## Tools
 
 - [`cal` for a command-line calendar](tools/cal.md)
