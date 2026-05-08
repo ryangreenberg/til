@@ -11,6 +11,7 @@ This is a collection of things I have learned while using computers (which I do 
 
 ## Git
 
+- [`git checkout -` for last branch](git/git-checkout-dash.md)
 - [Find my own commits](git/git-log-me.md)
 
 ## iOS
