@@ -20,6 +20,7 @@ This is a collection of things I have learned while using computers (which I do 
 
 ## macOS
 
+- [`cmd + option + L` to navigate to Downloads](macos/go-to-downloads.md)
 - [`cmd + shift + 5` is the final screenshot command](macos/cmd-shift-five.md)
 - [`cmd + tab` has a bunch of extras](macos/cmd-tab-extras.md)
 - [Use `open` to open in other applications](macos/open-to-open.md)
