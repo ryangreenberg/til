@@ -4,6 +4,10 @@ This is a collection of things I have learned while using computers (which I do 
 
 <!-- start index -->
 
+## Apps
+
+- [WhatsApp has per-conversation member tags](apps/whatsapp-member-tags.md)
+
 ## Chrome
 
 - [`cmd + 9` to select last tab](chrome/cmd-9-last-tab.md)
