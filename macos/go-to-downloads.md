@@ -14,7 +14,7 @@ If the file I want is on the Desktop, I use `cmd + shift + D` to navigate there.
 
 The heart wants what it wants (to keep its hands on the keyboard).
 
-Every shortcut listed in the Finder's Go menu also works in Open/Save dialog boxes.
+But it turns out that every shortcut listed in the Finder's Go menu also works in Open/Save dialog boxes.
 
 ![Screenshot of macOS Finder's Go menu showing destinations and their corresponding keyboard shortcuts. Documents: cmd + shift + O; Downloads: cmd + option + L; Desktop: cmd + shift + D; etc.](./go-menu.png)
 
