@@ -51,6 +51,10 @@ This is a collection of things I have learned while using computers (which I do 
 - [`termgraph` for CLI charts](tools/termgraph-cli-charts.md)
 - [`tldr` for simpler, example-driven help](tools/tldr-pages.md)
 
+## Typescript
+
+- [Table names and indexed access types](typescript/indexed-types.md)
+
 <!-- end index -->
 
 # Development
